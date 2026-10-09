@@ -9,27 +9,36 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class OrderItem {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id",nullable = false)
-    private CustomerOrder customerOrder;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // ID of the product being purchased
+    private Long productId;
+
     private String productName;
+
     private Integer quantity;
+
     private BigDecimal unitPrice;
 
-    public OrderItem(Long id, String name, int quantity, BigDecimal unitPrice) {
-        this.id = id;
-        this.productName = name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false)
+    private CustomerOrder customerOrder;
+
+    // Constructor used by OrderService
+    public OrderItem(
+            Long productId,
+            String productName,
+            Integer quantity,
+            BigDecimal unitPrice
+    ) {
+        this.productId = productId;
+        this.productName = productName;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
-    }
-
-    public Long getProductId() {
-        return id;
     }
 }

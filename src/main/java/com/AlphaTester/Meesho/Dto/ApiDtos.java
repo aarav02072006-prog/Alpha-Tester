@@ -3,9 +3,6 @@ package com.AlphaTester.Meesho.Dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.antlr.v4.runtime.misc.NotNull;
-import jakarta.*;
-import org.hibernate.annotations.CompositeTypeRegistrations;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
